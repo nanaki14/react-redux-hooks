@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
 import { useStore, useSelector, useDispatch } from 'react-redux'
 import dispatcher from '../store/modules/counter/dispatcher'
-import console = require('console');
 
 
 const Counter = () => {

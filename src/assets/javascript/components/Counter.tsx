@@ -1,10 +1,11 @@
 import React, { useCallback } from 'react'
 import { useStore, useSelector, useDispatch } from 'react-redux'
+import { RootState } from '../store'
 import dispatcher from '../store/modules/counter/dispatcher'
 
 
 const Counter = () => {
-  const counter = useSelector(state => state.counter)
+  const counter: RootState['counter'] = useSelector((state: RootState) => state.counter)
   console.log(counter)
 
   const store = useStore()
@@ -14,8 +15,8 @@ const Counter = () => {
   const dispatch = useDispatch()
   const {asyncIncrement} = dispatcher(dispatch)
 
-  const handleClick = useCallback(() => {
-    asyncIncrement(counter.count)
+  const handleClick = useCallback(async () => {
+    await asyncIncrement(counter.count)
   }, [counter.count])
 
   return (
